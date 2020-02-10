@@ -1,6 +1,6 @@
 import React from 'react';
-import {Todo} from './Todo'
-import { Table, TableContainer, TableHead, TableRow, TableBody } from '@material-ui/core';
+import { Todo } from './Todo'
+import { TableHead, TableRow, TableCell, TableContainer, Table, TableBody } from '@material-ui/core';
 
 export class TodoList extends React.Component {
 
@@ -11,7 +11,7 @@ export class TodoList extends React.Component {
     render() {
         const todoList = this.props.todoList.map((todo, i) => {
             return (
-                <Todo key={i} text={todo.text} priority={todo.priority} dueDate={todo.dueDate}/>
+                <Todo key={i} text={todo.text} priority={todo.priority} dueDate={todo.dueDate} />
             );
         });
 

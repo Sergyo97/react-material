@@ -1,17 +1,19 @@
-import React, {Component} from 'react';
-import logo from './logo.svg';
-import './App.css';
-import {TodoList} from "./TodoList";
+import React, { Component } from 'react';
+import logo from '../logo.svg';
+import './TodoApp.css';
+import { TodoList } from "./TodoList";
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import moment from "moment";
-import { Login } from "./components/Login";
+import { Login } from "./Login";
+import { InputLabel, Input } from '@material-ui/core';
+import { Button } from '@material-ui/core';
 
-class TodoApp extends Component {
+export class TodoApp extends Component {
 
     constructor(props) {
         super(props);
-        this.state = {items: [], text: '', priority: 0, dueDate: moment()};
+        this.state = { items: [], text: '', priority: 0, dueDate: moment() };
         this.handleTextChange = this.handleTextChange.bind(this);
         this.handlePriorityChange = this.handlePriorityChange.bind(this);
         this.handleDateChange = this.handleDateChange.bind(this);
@@ -24,38 +26,39 @@ class TodoApp extends Component {
         return (
             <div className="App">
                 <header className="App-header">
-                    <img src={logo} className="App-logo" alt="logo"/>
+                    <img src={logo} className="App-logo" alt="logo" />
                     <h1 className="App-title">TODO React App</h1>
                 </header>
 
-                <br/>
-                <br/>
+                <br />
+                <br />
+
                 <form onSubmit={this.handleSubmit} className="todo-form">
                     <h3>New TODO</h3>
-                    <label htmlFor="text" className="right-margin">
+                    <InputLabel htmlFor="text" className="right-margin">
                         Text:
-                    </label>
-
-                    <input
+                    </InputLabel>
+                    <Input
                         id="text"
                         onChange={this.handleTextChange}
                         value={this.state.text}>
-                    </input>
+                    </Input>
 
-                    <br/>
-                    <br/>
-                    <label htmlFor="priority" className="right-margin">
+                    <br />
+                    <br />
+
+                    <InputLabel htmlFor="priority" className="right-margin">
                         Priority:
-                    </label>
-
-                    <input
+                    </InputLabel>
+                    <Input
                         id="priority"
                         type="number"
                         onChange={this.handlePriorityChange}
                         value={this.state.priority}>
-                    </input>
-                    <br/>
-                    <br/>
+                    </Input>
+
+                    <br />
+                    <br />
 
                     <DatePicker
                         id="due-date"
@@ -63,14 +66,20 @@ class TodoApp extends Component {
                         placeholderText="Due date"
                         onChange={this.handleDateChange}>
                     </DatePicker>
-                    <br/>
-                    <button>
+
+                    <br />
+                    <br />
+
+                    <Button type="submit" variant="contained" color="primary">
                         Add #{this.state.items.length + 1}
-                    </button>
+                    </Button>
+
                 </form>
-                <br/>
-                <br/>
-                <TodoList todoList={this.state.items}/>
+
+                <br />
+                <br />
+
+                <TodoList todoList={this.state.items} />
             </div>
         );
     }
@@ -115,5 +124,3 @@ class TodoApp extends Component {
     }
 
 }
-
-export default TodoApp;

@@ -1,11 +1,9 @@
 import React, { Component } from 'react';
-import logo from '../logo.svg';
 import './TodoApp.css';
 import { TodoList } from "./TodoList";
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import moment from "moment";
-import { Login } from "./Login";
 import { InputLabel, Input } from '@material-ui/core';
 import { Button } from '@material-ui/core';
 
@@ -25,14 +23,6 @@ export class TodoApp extends Component {
 
         return (
             <div className="App">
-                <header className="App-header">
-                    <img src={logo} className="App-logo" alt="logo" />
-                    <h1 className="App-title">TODO React App</h1>
-                </header>
-
-                <br />
-                <br />
-
                 <form onSubmit={this.handleSubmit} className="todo-form">
                     <h3>New TODO</h3>
                     <InputLabel htmlFor="text" className="right-margin">

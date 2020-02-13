@@ -13,6 +13,19 @@ import './Login.css'
 
 export class Login extends React.Component {
 
+    clickHandler = (e) => {
+        e.preventDefault();
+        var email = document.querySelector('#email').value;
+        var password = document.querySelector('#password').value;
+        var correctPassword = localStorage.getItem(email);
+        if (correctPassword === password) {
+            localStorage.setItem('isLoggedIn', true);
+            window.location.href = '/';
+        }else {
+            localStorage.setItem('isLoggedIn', false);
+        }
+    }
+
     render() {
         return (
             <React.Fragment>
@@ -43,6 +56,7 @@ export class Login extends React.Component {
                                 variant="contained"
                                 color="primary"
                                 className="submit"
+                                onClick = {this.clickHandler}
                             >
                                 Sign in
                             </Button>
